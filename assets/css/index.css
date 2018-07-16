@@ -63,6 +63,48 @@ body {
   padding: 0 20px;
 }
 
+.article {
+  width: 840px;
+  /* min-height: 920px; */
+  margin-bottom:20px;
+  background: #f8f9fa; 
+  /* background: red;  */
+  padding-bottom: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: hidden;
+
+}
+.img {
+  width: 840px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.img img {
+  width: 840px;
+  /* height: 100%; */
+}
+
+.article h2{
+  margin: 30px 40px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.info {
+  
+  margin: 15px 40px;
+  text-align: justify;
+  font-size: 16px;
+  
+}
+
+.annotation {
+  margin: 15px 40px 0;
+  text-align: justify;
+  font-size: 16px;
+}
+
 /* end articles-list */
 
 

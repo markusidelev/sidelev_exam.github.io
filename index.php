@@ -8,12 +8,14 @@ include_once __DIR__ . '/models/Article.php';
 
 $config = include_once __DIR__ . '/config.php';
 
-$db = new DB($config['db']);
-$controller = new Controller();
+// $db = new DB($config['db']);
+// $controller = new Controller();
 
-// routes
-if (!count($_GET) && !count($_REQUEST) && !count($_POST)) {
-    $controller->actionIndex();
-} else if (count($_POST)) {
-    $controller->actionFiltration($_POST);
-}
+// // routes
+// if (!count($_GET) && !count($_REQUEST) && !count($_POST)) {
+//     $controller->actionIndex();
+// } else if (count($_POST)) {
+//     $controller->actionFiltration($_POST);
+// }
+
+include __DIR__ . '/view/index.view.php';
