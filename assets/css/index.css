@@ -1,0 +1,168 @@
+/* В этом файле вы пишете css код вашего приложения */
+
+html{
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f1f3f5;
+}
+
+.container {
+  max-width: 1240px;
+  width: calc(100% - 40px);
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+/* header */
+
+.header {
+  background: url('/assets/img/bg.jpg') bottom center / cover no-repeat;
+  display: flex;
+  flex: 0 0 300px;
+  margin-bottom: 60px;
+}
+
+.header-title {
+  margin: auto;
+  color: white;
+  text-align: center;
+}
+
+.header-logo {
+  transform: translateX(60px);
+  margin-bottom: 35px;
+}
+
+.header-title__main {
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.header-title__add {
+  font-weight: 400;
+  margin-top: 0;
+  font-size: 16px;
+}
+
+/* end header */
+
+
+
+
+/* articles-list */
+.articles-list {
+  padding: 0 20px;
+}
+
+/* end articles-list */
+
+
+
+
+/* sidebar */
+
+/*.sidebar {
+  flex: 0 0 26.66666666666667%;
+}*/
+
+.sidebar {
+  width: calc(100% - 40px);
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sidebar-item {
+  margin-bottom: 45px;
+}
+
+.sidebar-item__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-item__title .delimiter {
+  flex: 1;
+  margin: 0 10px;
+  height: 2px;
+  background-color: #8c8d8e;
+}
+
+.sidebar-item__title .title {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.sidebar-item__title .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-item__label {
+  font-weight: 700;
+  color: white;
+  font-size: 12px;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: #262626;
+  transition: all 0.25s;
+  text-decoration: none;
+}
+
+.sidebar-item__label:hover {
+  background-color: #8c8d8e;
+}
+/* end sidebar */
+
+
+
+
+/* footer */
+
+.footer {
+  flex: 0 0 120px;
+  line-height: 120px;
+  display: flex;
+  background-color: #262626;
+  color: white;
+  font-size: 14px;
+}
+
+.footer-logo {
+  flex: 0 0 120px;
+  display: flex;
+  background-color: #000;
+}
+
+.footer-logo__pic {
+  margin: auto;
+  width: 38px;
+  height: 44px;
+}
+
+.footer-main,
+.footer-cr {
+  text-align: center;
+}
+
+.footer-main {
+  flex: 1;
+}
+
+.footer-cr {
+  flex: 0 0 200px;
+}
+
+/* end footer */

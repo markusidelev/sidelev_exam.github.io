@@ -1,0 +1,15 @@
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.articles-list {
+  flex: 0 0 70%;
+  padding: 0;
+}
+
+.sidebar {
+  flex: 0 0 26.66666666666667%;
+  order: 1;
+  padding: 0;
+}
