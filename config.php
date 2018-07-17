@@ -28,6 +28,8 @@ $dbname = 'blog';
 $username = "root";
 $password = "";
 $per_page = "10";
+// $page_position = 
+// $page_number = 1;
 
 $db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
 

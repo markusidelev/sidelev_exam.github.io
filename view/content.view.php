@@ -5,7 +5,8 @@
 
 <?php
   $articles = get_articles_all();
-  foreach ($articles as $article): ?>
+  $i = 1;
+  foreach ($articles as $article):?>
 
     <?php 
     $author = get_author_by_id($article["author_id"]); 
@@ -16,7 +17,7 @@
       <div class="img">
         <img src="<?php echo $photo?>" alt="">
       </div>
-      
+
       <h2><?php echo $article["title"]?></h2>
 
       <p class="info"><?php echo $author?>
@@ -28,9 +29,13 @@
       <p class="annotation"><?php echo $article["annotation"]?></p>
 
     </div>
-
-  <?php endforeach;
+    <?php $i++;
+    if($i > $per_page) break;
+    
+    ?>
+ <?php endforeach;
 ?>
+
 
 
   
