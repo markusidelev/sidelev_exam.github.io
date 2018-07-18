@@ -134,12 +134,16 @@ include_once __DIR__ . '/../models/Article.php';
      
      
     try {
-      
         $conn = connectDB();
-     
+ 
+        $options = getOptions();
+                 
+        $data = getData($options, $conn);
+              
         echo json_encode(array(
             'code' => 'success',
-            'data' => $_GET
+            'options' => $options,
+            'data' => $data
         ));
     }
     catch (Exception $e) {
@@ -153,9 +157,9 @@ include_once __DIR__ . '/../models/Article.php';
 
 
     function getOptions() {
-        $year = (isset($_GET['year']));
-        $monthId = (isset($_GET['month']));
-        $authorId = (isset($_GET['author_select']));
+        $year = (isset($_GET['year'])) ? (int)$_GET['year'] : 0;
+        $monthId = (isset($_GET['month'])) ? (int)$_GET['month'] : 0;
+        $authorId = (isset($_GET['author_select'])) ? $_GET['author'] : 0;
 
         return array(
             'year' => $year,
@@ -170,23 +174,32 @@ include_once __DIR__ . '/../models/Article.php';
         $month = $options['month'];
         $authorId = $options['author'];
 
-        $querry = "
-        SELECT
+        $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
+        $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
+        $authorWhere = ($authorId !== 0) ? "and author_id = $authorId" : '';
+
+
+
+        $query = "
+        select
             articles.title as title,
             articles.annotation as text,
             authors.name as name,
             articles.updated_at as date,
             photos.link as photo
-        FROM
+        from
             `articles`,
             `authors`,
             `photos`
-        WHERE
+        where
             author_id = authors.id
-        AND author_id = $authorId
-        AND photo_id = photos.id
-        AND year(updated_at) = $year
-        AND month(updated_at) = $month
+        $authorWhere
+        and photo_id = photos.id
+        $yearWhere
+        $monthWhere
         ";
+        
+        $data = $conn->query($query);
+        return $data->fetch_all(MYSQLI_ASSOC);
     }
 
