@@ -7,6 +7,19 @@
         <img src="/assets/img/svg/users.svg" alt="">
       </div>
     </div>
+    <div id="authors_list" class="sidebar-item__content">
+      <select name="author_select" id="">
+        <!-- //2 -->
+        <?php
+          $authors = get_all_authors();
+          foreach ($authors as $author):?>
+            <option value="<?php echo $author["id"]?>"><?php echo $author["name"] ?></option>
+
+        <?php endforeach
+       ?>
+
+      </select>
+    </div>
   </div>
   <div class="sidebar-item">
     <div class="sidebar-item__title">
@@ -32,18 +45,18 @@
       </div>
     </div>
       <div id="month" class="sidebar-item__content">
-        <a href="#" id="1" class="sidebar-item__label">Январь</a>
-        <a href="#" id="2" class="sidebar-item__label">Февраль</a>
-        <a href="#" id="3" class="sidebar-item__label">Март</a>
-        <a href="#" id="4" class="sidebar-item__label">Апрель</a>
-        <a href="#" id="5" class="sidebar-item__label">Май</a>
-        <a href="#" id="6" class="sidebar-item__label">Июнь</a>
-        <a href="#" id="7" class="sidebar-item__label">Июль</a>
-        <a href="#" id="8" class="sidebar-item__label">Август</a>
-        <a href="#" id="9" class="sidebar-item__label">Сентябрь</a>
-        <a href="#" id="10" class="sidebar-item__label">Октябрь</a>
-        <a href="#" id="11" class="sidebar-item__label">Ноябрь</a>
-        <a href="#" id="12" class="sidebar-item__label">Декабрь</a>
+        <a href="#" id="m1" class="sidebar-item__label">Январь</a>
+        <a href="#" id="m2" class="sidebar-item__label">Февраль</a>
+        <a href="#" id="m3" class="sidebar-item__label">Март</a>
+        <a href="#" id="m4" class="sidebar-item__label">Апрель</a>
+        <a href="#" id="m5" class="sidebar-item__label">Май</a>
+        <a href="#" id="m6" class="sidebar-item__label">Июнь</a>
+        <a href="#" id="m7" class="sidebar-item__label">Июль</a>
+        <a href="#" id="m8" class="sidebar-item__label">Август</a>
+        <a href="#" id="m9" class="sidebar-item__label">Сентябрь</a>
+        <a href="#" id="m10" class="sidebar-item__label">Октябрь</a>
+        <a href="#" id="m11" class="sidebar-item__label">Ноябрь</a>
+        <a href="#" id="m12" class="sidebar-item__label">Декабрь</a>
       </div>
   </div>
 </aside>

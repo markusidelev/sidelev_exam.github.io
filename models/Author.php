@@ -40,3 +40,12 @@ function get_author_by_id($author_id) {
     }
     
 };
+//2
+function get_all_authors() {
+    global $db;
+    $authors = $db->query("SELECT * FROM authors");
+    return $authors;
+
+
+
+};
