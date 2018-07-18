@@ -1,0 +1,74 @@
+select
+    a.id as id,
+    a.title as title,
+    a.annotation as text,
+    p.link as photo,
+    a.author_id as auth_id,
+    a.updated_at as date,
+    a.photo_id as ph_id,
+   from
+    articles as a,
+    photos as p,
+    authors as auth
+where
+    g.category_id = выбранная_категория and
+    g.brand_id in (список_брендов_через_запятую) and
+    g.brand_id = b.id and
+    (g.price between минимальная_цена and максимальная_цена)
+order by поле_сортировки направление_сортировки
+
+SELECT 
+    title, 
+    link, 
+    name
+FROM
+	articles,
+    authors,
+    photos
+WHERE
+	autor_id = authors.id,
+    photo_id = photos.id
+    
+    SELECT 
+articles.title, 
+photos.link, 
+authors.name
+FROM
+articles,
+authors,
+photos
+WHERE
+author_id = authors.id
+
+
+arti
+
+SELECT title, name, updated_at, link FROM `articles`, 'authors','photos' WHERE author_id = authors.id AND photo_id = photos.id
+
+SELECT 'title', 'name', 'updated_at', 'link' FROM `articles`, `authors`,`photos` WHERE author_id = authors.id AND photo_id = photos.id
+
+SELECT articles.title as title, authors.name as name, articles.updated_at as date, photos.link as photo FROM `articles`, `authors`,`photos` WHERE author_id = authors.id AND photo_id = photos.id
+
+SELECT articles.title as title, articles.annotation as text ,authors.name as name, articles.updated_at as date, photos.link as photo FROM `articles`, `authors`,`photos` WHERE author_id = authors.id AND photo_id = photos.id
+
+select * from articles where year(updated_at) = 2010
+select * from articles where month(updated_at) = 1
+
+SELECT articles.title as title, articles.annotation as text ,authors.name as name, articles.updated_at as date, photos.link as photo FROM `articles`, `authors`,`photos` WHERE author_id = authors.id AND author_id = 20 AND photo_id = photos.id AND year(updated_at) = 2010 AND month(updated_at) = 5
+
+SELECT
+	articles.title as title,
+	articles.annotation as text,
+	authors.name as name,
+	articles.updated_at as date,
+	photos.link as photo
+FROM
+	`articles`,
+	`authors`,
+	`photos`
+WHERE
+	author_id = authors.id
+AND author_id >5<20
+AND photo_id = photos.id
+AND year(updated_at) = 2010
+AND month(updated_at) = 5

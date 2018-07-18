@@ -4,6 +4,8 @@ include_once __DIR__ . '/../models/Author.php';
 include_once __DIR__ . '/../models/Article.php';
 
 
+
+
     // class DB
     // {
     //     private $conn = null;
@@ -111,5 +113,80 @@ include_once __DIR__ . '/../models/Article.php';
     //     }
 
     // }   
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'blog');
 
-    
+    function connectDB() {
+        $errorMessage = 'Невозможно подключиться к серверу базы данных';
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        if (!$conn)
+            throw new Exception($errorMessage);
+        else {
+            $query = $conn->query('set names utf8');
+            if (!$query)
+                throw new Exception($errorMessage);
+            else
+                return $conn;
+        }
+    }
+     
+     
+    try {
+      
+        $conn = connectDB();
+     
+        echo json_encode(array(
+            'code' => 'success',
+            'data' => $_GET
+        ));
+    }
+    catch (Exception $e) {
+        
+        echo json_encode(array(
+            'code' => 'error',
+            'message' => $e->getMessage()
+        ));
+    }
+
+
+
+    function getOptions() {
+        $year = (isset($_GET['year']));
+        $monthId = (isset($_GET['month']));
+        $authorId = (isset($_GET['author_select']));
+
+        return array(
+            'year' => $year,
+            'month' => $monthId,
+            'author' => $authorId
+        );
+        
+    };
+
+    function getData($options, $conn) {
+        $year = $options['year'];
+        $month = $options['month'];
+        $authorId = $options['author'];
+
+        $querry = "
+        SELECT
+            articles.title as title,
+            articles.annotation as text,
+            authors.name as name,
+            articles.updated_at as date,
+            photos.link as photo
+        FROM
+            `articles`,
+            `authors`,
+            `photos`
+        WHERE
+            author_id = authors.id
+        AND author_id = $authorId
+        AND photo_id = photos.id
+        AND year(updated_at) = $year
+        AND month(updated_at) = $month
+        ";
+    }
+

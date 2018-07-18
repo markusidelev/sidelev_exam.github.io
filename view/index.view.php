@@ -13,6 +13,7 @@
 href="/assets/css/index1024.css" rel="stylesheet" />
     <link media="only screen and (min-width: 1024px)" 
     href="/assets/css/index1025.css" rel="stylesheet" />
+    
 </head>
 <body>
 
@@ -20,5 +21,6 @@ href="/assets/css/index1024.css" rel="stylesheet" />
 
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="/assets/js/index.js"></script>
+    <!-- <script>$(document).ready(blogDB.init())</script> -->
 </body>
 </html>

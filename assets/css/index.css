@@ -1,5 +1,7 @@
 /* В этом файле вы пишете css код вашего приложения */
-
+button {
+  border: none !important;
+}
 html{
   height: 100%;
   font-family: "Roboto", sans-serif;
@@ -161,14 +163,23 @@ body {
   background-color: #262626;
   transition: all 0.25s;
   text-decoration: none;
+  
 }
 
 .sidebar-item__label:hover {
   background-color: #8c8d8e;
 }
+
+#year .active {
+  background-color: #2e1c80 !important;  
+}
+
+#month .active {
+  background-color: #2e1c80 !important;
+  
+}
+
 /* end sidebar */
-
-
 
 
 /* footer */

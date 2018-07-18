@@ -6,7 +6,7 @@ include_once __DIR__ . '/models/Author.php';
 include_once __DIR__ . '/models/Article.php';
 
 
-$config = include_once __DIR__ . '/config.php';
+include_once __DIR__ . '/config.php';
 
 // $db = new DB($config['db']);
 // $controller = new Controller();
