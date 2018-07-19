@@ -7,7 +7,7 @@
         <img src="/assets/img/svg/users.svg" alt="">
       </div>
     </div>
-    <div id="authors_list" class="sidebar-item__content">
+    <div id="authors_list" class="sidebar-item__content select">
       <form action="" id="author-form">
 
         <select id="author_select" name="author_select">

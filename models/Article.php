@@ -80,6 +80,10 @@
 
 // }
 
+
+
+
+
 // function get_articles_all() {
 //     global $db;
 //     $articles = $db->query("SELECT * FROM articles");

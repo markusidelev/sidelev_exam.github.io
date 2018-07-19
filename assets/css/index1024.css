@@ -1,8 +1,36 @@
 @media all and (max-width: 768px) {
   .header-logo {
-    transform: translateX(0);
+    /* transform: translateX(0); */
     width: 100vw;
   }
+
+  .article {
+    width: 100%;
+    
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    
+    padding-bottom: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+  }
+  
+  .img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    overflow: hidden;
+  }
+  
+  .img img {
+    width: 100%;
+    
+    
+  }
+
+
+
+
 
   .footer {
     display: block;

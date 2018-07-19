@@ -23,19 +23,15 @@ include_once __DIR__ . '/../models/Article.php';
                 return $conn;
         }
     }
-     
-     
     
-    
-    
+    //получить значения запроса или по умолчанию
     function getOptions() {
         $year = (isset($_GET['year'])) ? (int)$_GET['year'] : 0;
         $monthId = (isset($_GET['month'])) ? (int)$_GET['month'] : 0;
         $authorId = (isset($_GET['author_select'])) ? (int)$_GET['author_select'] : 0;
         $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 
-        $start = ($page * 10) - 10;
-        
+        $start = ($page * 10) - 10;        
 
         return array(
             'year' => $year,
@@ -59,8 +55,6 @@ include_once __DIR__ . '/../models/Article.php';
         $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
         $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
         $authorWhere = ($authorId !== 0) ? "and author_id = $authorId" : '';
-
-
 
         $query = "
         select

@@ -11,8 +11,9 @@
 
       <h2><%= item.title %></h2>
 
-      <p class="info"><%= item.name %> /
-        <span> <%= item.date %> </span>
+      <p class="info"><%= item.name %> 
+  
+        <span style="font-style: italic; color: #acacac"> / <%= item.date %> </span>
       </p>
 
       <p class="annotation"><%= item.text %></p>

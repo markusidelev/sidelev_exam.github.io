@@ -59,13 +59,16 @@ var blogDB = (function($) {
 
     function _changePage(){
         var $this = $(this);
+            // $("#page .active").removeAttr("style");
+            
             $("#page .active").removeClass("active");
             $this.addClass('active');
+            $this.css('background-color', "#8c8d8e" )
             selectedPage = $this.attr('data-page');
             _getData();
     }
 
-    function _getPageCount() {};
+    function _getPageCount() {}; 
 
     function _getData() {
         var allData = 'year=' + selectedYear + '&' + 'month=' + selectedMonth + '&' + ui.$form.serialize() + '&' + 'page=' + selectedPage;

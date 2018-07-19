@@ -1,10 +1,16 @@
 /* В этом файле вы пишете css код вашего приложения */
+/* 
+font-family: 'Spectral', serif;
+font-family: 'Roboto', sans-serif; */
+
 button {
   border: none;
 }
-html{
+
+html {
   height: 100%;
   font-family: "Roboto", sans-serif;
+  color: #333333;
 }
 
 body {
@@ -29,6 +35,8 @@ body {
   display: flex;
   flex: 0 0 300px;
   margin-bottom: 60px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .header-title {
@@ -57,25 +65,23 @@ body {
 
 /* end header */
 
-
-
-
 /* articles-list */
+
 .articles-list {
   padding: 0 20px;
 }
 
 .article {
   width: 840px;
-  /* min-height: 920px; */
-  margin-bottom:20px;
-  background: #f8f9fa; 
-  /* background: red;  */
+  
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  
   padding-bottom: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
-
 }
+
 .img {
   width: 840px;
   height: 400px;
@@ -84,39 +90,38 @@ body {
 
 .img img {
   width: 840px;
-  /* height: 100%; */
+  
 }
 
-.article h2{
+.article h2 {
   margin: 30px 40px;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: 'Spectral', serif;
+
 }
 
 .info {
-  
   margin: 15px 40px;
   text-align: justify;
-  font-size: 16px;
-  
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.info span{
+  font-style: italic;
+
 }
 
 .annotation {
   margin: 15px 40px 0;
   text-align: justify;
   font-size: 16px;
+  font-family: 'Spectral', serif;
+  font-weight: 600;
 }
 
 /* end articles-list */
-
-
-
-
-/* sidebar */
-
-/*.sidebar {
-  flex: 0 0 26.66666666666667%;
-}*/
 
 .sidebar {
   width: calc(100% - 40px);
@@ -163,40 +168,90 @@ body {
   background-color: #262626;
   transition: all 0.25s;
   text-decoration: none;
-  
 }
 
 .sidebar-item__label:hover {
   background-color: #8c8d8e;
 }
+/* SELECT  */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: white;
+  background-image: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: block;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: white;
+  overflow: hidden;
+  border-radius: 5px  ;
+  border: #8c8d8e 0.5px solid;
+}
+select {
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #333333;
+  cursor: pointer;
+  font-style: italic;
+  padding-left: 20px;
+  font-size: 14px;
+  
+  
+  
+}
+select::-ms-expand {
+  display: none;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  background: #262626;
+  pointer-events: none;
+  
+}
+/* Transition */
+.select:hover::after {
+  color: white;
+}
+.select::after {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+
 
 #year .active {
-  background-color: #2e1c80 !important;  
+  background-color: #324772 !important;
 }
 
 #month .active {
-  background-color: #2e1c80 ;
-  
-}
-/* end sidebar */
-
-#pagination {
-  display: inline-block;
-}
-#page .pageBtn {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
+  background-color: #324772 !important;
+  /* background-color: #8c8d8e !important; */
 }
 
-#page .pageBtn.active {
-  background-color: #4CAF50;
-  color: white;
+#page {
+  margin: 0 auto;
 }
-
-#page .pageBtn:hover:not(.active) {background-color: #ddd;}
-
+#page .active {
+  background-color: #8c8d8e ;
+}
 
 /* footer */
 
