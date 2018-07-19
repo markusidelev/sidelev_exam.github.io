@@ -55,7 +55,23 @@ var blogDB = (function($) {
         $this.addClass('active');
         selectedMonth = $this.attr('data-month');
         _getData();
+
+        // var $this = $(this);
+        // if ($this.hasClass( "active" )){
+        //     $("#month .active").removeClass("active")
+        //     selectedMonth = 0;
+        //     return selectedMonth;
+        // }
+        // else{            
+        //     $("#month .active").removeClass("active")
+        //     // }
+        //     $this.addClass('active');
+        //     selectedMonth = $this.attr('data-month');
+        //     return selectedMonth;
+        // }
+        // _getData();
     }
+
 
     function _changePage(){
         var $this = $(this);
