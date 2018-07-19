@@ -7,5 +7,7 @@
   <?php include __DIR__ . "/sidebar.view.php" ?>
 
 </div>
+<?php include __DIR__ . "/pagination.view.php" ?>
+
 
 <?php include __DIR__ . "/footer.view.php" ?>

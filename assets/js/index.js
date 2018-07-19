@@ -8,7 +8,8 @@ var blogDB = (function($) {
         _bindHandlers();
     };
  
-    
+   
+
     var ui = {
         $form: $('#author-form'),
         $author: $('#author_select'),
@@ -17,26 +18,29 @@ var blogDB = (function($) {
         $month: $('#month'),
         $monthBtn: $('.monthBtn'),
         $list: $('#list'),
-        $template: $('#template')
+        $template: $('#template'),
+        $page: $('#page'),
+        $pageBtn: $('.pageBtn')
     };
 
-    var selectedYear = 0;
-    var selectedMonth = 0;
-    var template = _.template( $("#template").html() );	
+    var selectedYear = 0,
+    selectedMonth = 0,
+    selectedPage = 1,
+    template = _.template( $("#template").html() );	
 
 
     
     function _bindHandlers() {
         ui.$yearBtn.on('click', _changeYear);
         ui.$monthBtn.on('click', _changeMonth);
-        // ui.$author.on('change', getAuthor);
+        ui.$pageBtn.on('click', _changePage);
         ui.$author.on('change', _getData);
     } 
     
     function _changeYear(){
         var $this = $(this);
         // if ($("#year .yearBtn").is(".active")){
-            $("#year .active").removeClass("active")
+            $("#year .active").removeClass("active");
         // }
         $this.addClass('active');
         selectedYear = $this.attr('data-year');
@@ -53,8 +57,16 @@ var blogDB = (function($) {
         _getData();
     }
 
+    function _changePage(){
+        var $this = $(this);
+            $("#page .active").removeClass("active");
+            $this.addClass('active');
+            selectedPage = $this.attr('data-page');
+            _getData();
+    }
+
     function _getData() {
-        var allData = 'year=' + selectedYear + '&' + 'month=' + selectedMonth + '&' + ui.$form.serialize();
+        var allData = 'year=' + selectedYear + '&' + 'month=' + selectedMonth + '&' + ui.$form.serialize() + '&' + 'page=' + selectedPage;
         $.ajax({
             url: 'core/DB.php',
             data: allData,

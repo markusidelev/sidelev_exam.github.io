@@ -27,4 +27,3 @@
       <% }); %>
   </script>
   </div>
-<?php include __DIR__ . "/pagination.view.php" ?>

@@ -89,3 +89,41 @@ AND author_id >5<20
 AND photo_id = photos.id
 AND year(updated_at) = 2010
 AND month(updated_at) = 5
+
+
+select
+        articles.title as title,
+            articles.annotation as text,
+            authors.name as name,
+            articles.updated_at as date,
+            photos.link as photo
+        from
+        `articles`,
+            `authors`,
+            `photos`
+        where
+            author_id = authors.id
+            and
+        author_id = 5
+        and photo_id = photos.id
+        and
+        year(updated_at) = 2011
+        and
+        month(updated_at) > 8
+        LIMIT 10
+        OFFSET 0
+
+SELECT COUNT(*) FROM( 
+    SELECT DISTINCT
+    articles.title,
+    authors.name,
+    articles.updated_at
+FROM
+    `articles`,
+    `authors`
+WHERE
+    author_id = AUTHORS.id 
+    AND author_id = 5 
+    AND YEAR(updated_at) = 2011 
+    AND MONTH(updated_at) > 8) 
+    AS subquery
