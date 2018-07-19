@@ -1,9 +1,9 @@
 <?php
 
-include_once __DIR__ . '/core/DB.php';
 include_once __DIR__ . '/core/Controller.php';
 include_once __DIR__ . '/models/Author.php';
 include_once __DIR__ . '/models/Article.php';
+
 
 
 include_once __DIR__ . '/config.php';
@@ -19,3 +19,4 @@ include_once __DIR__ . '/config.php';
 // }
 
 include __DIR__ . '/view/index.view.php';
+include_once __DIR__ . '/core/DB.php';

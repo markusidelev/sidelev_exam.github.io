@@ -80,20 +80,20 @@
 
 // }
 
-function get_articles_all() {
-    global $db;
-    $articles = $db->query("SELECT * FROM articles");
-    return $articles;
-};
+// function get_articles_all() {
+//     global $db;
+//     $articles = $db->query("SELECT * FROM articles");
+//     return $articles;
+// };
 
-function get_photo_by_id ($photo_id) {
-    global $db;
-    $photos = $db->query("SELECT * FROM photos WHERE id = $photo_id");
-    foreach ($photos as $photo){
-        return $photo["link"];
-    }
+// function get_photo_by_id ($photo_id) {
+//     global $db;
+//     $photos = $db->query("SELECT * FROM photos WHERE id = $photo_id");
+//     foreach ($photos as $photo){
+//         return $photo["link"];
+//     }
     
-};
+// };
 
 /*
 function get_author_by_id($author_id) {

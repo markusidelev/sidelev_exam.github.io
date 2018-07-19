@@ -11,8 +11,8 @@
       <form action="" id="author-form">
 
         <select id="author_select" name="author_select">
-          <!-- //2 -->
-          <option disabled selected value> -- выберите автора -- </option>
+          //2
+          <option selected value> -- выберите автора -- </option>
           <?php
           $authors = get_all_authors();
           foreach ($authors as $author):?>

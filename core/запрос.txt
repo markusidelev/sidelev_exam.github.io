@@ -72,3 +72,20 @@ AND author_id >5<20
 AND photo_id = photos.id
 AND year(updated_at) = 2010
 AND month(updated_at) = 5
+
+SELECT
+	articles.title as title,
+	articles.annotation as text,
+	authors.name as name,
+	articles.updated_at as date,
+	photos.link as photo
+FROM
+	`articles`,
+	`authors`,
+	`photos`
+WHERE
+	author_id = authors.id
+AND author_id >5<20
+AND photo_id = photos.id
+AND year(updated_at) = 2010
+AND month(updated_at) = 5

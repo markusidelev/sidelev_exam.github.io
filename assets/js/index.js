@@ -1,14 +1,10 @@
-var a = 2;
-console.log("abaslkf");
-
-
 var blogDB = (function($) {
- 
+    
     // Инициализация модуля
     function init() {
         console.log('BlogDB');
         console.info('init blogDB');
-
+        _getData();
         _bindHandlers();
     };
  
@@ -19,11 +15,15 @@ var blogDB = (function($) {
         $year: $('#year'),
         $yearBtn: $('.yearBtn'),
         $month: $('#month'),
-        $monthBtn: $('.monthBtn')
+        $monthBtn: $('.monthBtn'),
+        $list: $('#list'),
+        $template: $('#template')
     };
 
     var selectedYear = 0;
     var selectedMonth = 0;
+    var template = _.template( $("#template").html() );	
+
 
     
     function _bindHandlers() {
@@ -80,6 +80,8 @@ var blogDB = (function($) {
     // Успешное получение данных
     function _dataSuccess(responce) {
         console.log(responce);
+        ui.$list.html(template({data: responce.data}));
+        
     }
 
     return {

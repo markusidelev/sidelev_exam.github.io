@@ -32,15 +32,16 @@
 //     }
 // }
 
-function get_author_by_id($author_id) {
-    global $db;
-    $authors = $db->query("SELECT * FROM authors WHERE id = $author_id");
-    foreach ($authors as $author){
-        return $author["name"];
-    }
+// function get_author_by_id($author_id) {
+//     global $db;
+//     $authors = $db->query("SELECT * FROM authors WHERE id = $author_id");
+//     foreach ($authors as $author){
+//         return $author["name"];
+//     }
     
-};
-//2
+// };
+// //2
+
 function get_all_authors() {
     global $db;
     $authors = $db->query("SELECT * FROM authors");

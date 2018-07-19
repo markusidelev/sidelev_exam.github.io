@@ -133,33 +133,13 @@ include_once __DIR__ . '/../models/Article.php';
     }
      
      
-    try {
-        $conn = connectDB();
- 
-        $options = getOptions();
-                 
-        $data = getData($options, $conn);
-              
-        echo json_encode(array(
-            'code' => 'success',
-            'options' => $options,
-            'data' => $data
-        ));
-    }
-    catch (Exception $e) {
-        
-        echo json_encode(array(
-            'code' => 'error',
-            'message' => $e->getMessage()
-        ));
-    }
-
-
-
+    
+    
+    
     function getOptions() {
         $year = (isset($_GET['year'])) ? (int)$_GET['year'] : 0;
         $monthId = (isset($_GET['month'])) ? (int)$_GET['month'] : 0;
-        $authorId = (isset($_GET['author_select'])) ? $_GET['author'] : 0;
+        $authorId = (isset($_GET['author_select'])) ? (int)$_GET['author_select'] : 0;
 
         return array(
             'year' => $year,
@@ -173,6 +153,7 @@ include_once __DIR__ . '/../models/Article.php';
         $year = $options['year'];
         $month = $options['month'];
         $authorId = $options['author'];
+        $limit = "LIMIT 10";
 
         $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
         $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
@@ -182,13 +163,13 @@ include_once __DIR__ . '/../models/Article.php';
 
         $query = "
         select
-            articles.title as title,
+        articles.title as title,
             articles.annotation as text,
             authors.name as name,
             articles.updated_at as date,
             photos.link as photo
         from
-            `articles`,
+        `articles`,
             `authors`,
             `photos`
         where
@@ -197,9 +178,31 @@ include_once __DIR__ . '/../models/Article.php';
         and photo_id = photos.id
         $yearWhere
         $monthWhere
+        $limit
         ";
         
         $data = $conn->query($query);
         return $data->fetch_all(MYSQLI_ASSOC);
     }
 
+
+        try {
+                $conn = connectDB();
+         
+                $options = getOptions();
+                         
+                $data = getData($options, $conn);
+                      
+                echo json_encode(array(
+                    'code' => 'success',
+                    'options' => $options,
+                    'data' => $data
+                ));
+            }
+            catch (Exception $e) {
+                
+                echo json_encode(array(
+                    'code' => 'error',
+                    'message' => $e->getMessage()
+                ));
+            }
