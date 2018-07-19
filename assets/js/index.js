@@ -65,6 +65,8 @@ var blogDB = (function($) {
             _getData();
     }
 
+    function _getPageCount() {};
+
     function _getData() {
         var allData = 'year=' + selectedYear + '&' + 'month=' + selectedMonth + '&' + ui.$form.serialize() + '&' + 'page=' + selectedPage;
         $.ajax({

@@ -46,6 +46,8 @@ include_once __DIR__ . '/../models/Article.php';
         
     };
 
+    function getPageCount(){};
+    
     function getData($options, $conn) {
         $year = $options['year'];
         $month = $options['month'];
@@ -91,7 +93,9 @@ include_once __DIR__ . '/../models/Article.php';
                 $conn = connectDB();
          
                 $options = getOptions();
-                         
+                
+                $pageData = getPageCount();
+
                 $data = getData($options, $conn);
                       
                 echo json_encode(array(

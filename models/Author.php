@@ -46,7 +46,4 @@ function get_all_authors() {
     global $db;
     $authors = $db->query("SELECT * FROM authors");
     return $authors;
-
-
-
 };

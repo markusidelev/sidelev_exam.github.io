@@ -1,6 +1,6 @@
 /* В этом файле вы пишете css код вашего приложения */
 button {
-  border: none !important;
+  border: none;
 }
 html{
   height: 100%;
@@ -175,11 +175,27 @@ body {
 }
 
 #month .active {
-  background-color: #2e1c80 !important;
+  background-color: #2e1c80 ;
   
 }
-
 /* end sidebar */
+
+#pagination {
+  display: inline-block;
+}
+#page .pageBtn {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+#page .pageBtn.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#page .pageBtn:hover:not(.active) {background-color: #ddd;}
 
 
 /* footer */

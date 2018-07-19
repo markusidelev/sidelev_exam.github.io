@@ -12,17 +12,11 @@
       <h2><%= item.title %></h2>
 
       <p class="info"><%= item.name %> /
-        <span> <%= item.date %>
-         
-        </span>
+        <span> <%= item.date %> </span>
       </p>
 
-      
-      
       <p class="annotation"><%= item.text %></p>
-       
-      
-      
+
     </div>
       <% }); %>
   </script>
