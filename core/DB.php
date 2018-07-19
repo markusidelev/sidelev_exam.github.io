@@ -154,6 +154,7 @@ include_once __DIR__ . '/../models/Article.php';
         $month = $options['month'];
         $authorId = $options['author'];
         $limit = "LIMIT 10";
+        $offset = "OFFSET 0";
 
         $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
         $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
@@ -179,7 +180,9 @@ include_once __DIR__ . '/../models/Article.php';
         $yearWhere
         $monthWhere
         $limit
+        $offset
         ";
+        // order by updated_at desc
         
         $data = $conn->query($query);
         return $data->fetch_all(MYSQLI_ASSOC);
