@@ -39,21 +39,31 @@ var blogDB = (function($) {
     
     function _changeYear(){
         var $this = $(this);
-        // if ($("#year .yearBtn").is(".active")){
+        if($this.hasClass("active")){
             $("#year .active").removeClass("active");
-        // }
-        $this.addClass('active');
-        selectedYear = $this.attr('data-year');
+            selectedYear = 0;
+        }
+        else {
+            $("#year .active").removeClass("active");
+            $this.addClass('active');
+            selectedYear = $this.attr('data-year');
+
+        };
         _getData();
     }
     
     function _changeMonth(){
         var $this = $(this);
-        // if ($("#month .monthBtn").is(".active")){
-            $("#month .active").removeClass("active")
-        // }
-        $this.addClass('active');
-        selectedMonth = $this.attr('data-month');
+       if($this.hasClass("active")){
+           $("#month .active").removeClass("active");
+            selectedMonth = 0;   
+        }
+        else {
+            $("#month .active").removeClass("active");
+            $this.addClass('active');
+            selectedMonth = $this.attr('data-month');
+        }
+        
         _getData();
 
         // var $this = $(this);
@@ -84,14 +94,14 @@ var blogDB = (function($) {
             _getData();
     }
 
-    function _getPageCount() {}; 
+     
 
     function _getData() {
         var allData = 'year=' + selectedYear + '&' + 'month=' + selectedMonth + '&' + ui.$form.serialize() + '&' + 'page=' + selectedPage;
         $.ajax({
             url: 'core/DB.php',
             data: allData,
-            type: 'GET',
+            type: 'POST',
             cache: false,
             dataType: 'json',
             error: _dataError,

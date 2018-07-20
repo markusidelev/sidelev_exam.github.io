@@ -2,6 +2,7 @@
 
 include_once __DIR__ . '/../models/Author.php';
 include_once __DIR__ . '/../models/Article.php';
+include_once __DIR__ . '/../config.php';
 
 
 
@@ -26,10 +27,10 @@ include_once __DIR__ . '/../models/Article.php';
     
     //получить значения запроса или по умолчанию
     function getOptions() {
-        $year = (isset($_GET['year'])) ? (int)$_GET['year'] : 0;
-        $monthId = (isset($_GET['month'])) ? (int)$_GET['month'] : 0;
-        $authorId = (isset($_GET['author_select'])) ? (int)$_GET['author_select'] : 0;
-        $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+        $year = (isset($_POST['year'])) ? (int)$_POST['year'] : 0;
+        $monthId = (isset($_POST['month'])) ? (int)$_POST['month'] : 0;
+        $authorId = (isset($_POST['author_select'])) ? (int)$_POST['author_select'] : 0;
+        $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
 
         $start = ($page * 10) - 10;        
 
@@ -42,13 +43,44 @@ include_once __DIR__ . '/../models/Article.php';
         
     };
 
-    function getPageCount(){};
-    
-    function getData($options, $conn) {
+    function getPageCount($options, $conn){
         $year = $options['year'];
         $month = $options['month'];
         $authorId = $options['author'];
-        $limit = "LIMIT 10";
+        $limit = " LIMIT $per_page ";
+        $start = $options['start'];
+        $offset = " OFFSET $start";
+
+        $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
+        $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
+        $authorWhere = ($authorId !== 0) ? "and author_id = $authorId" : '';
+
+        $countQuery = "
+        SELECT COUNT(*) FROM( 
+            SELECT DISTINCT
+            articles.title,
+            authors.name,
+            articles.updated_at
+        FROM
+            `articles`,
+            `authors`
+        WHERE
+            author_id = AUTHORS.id 
+            $authorWhere            
+            $yearWhere 
+            $monthWhere ) 
+            AS subquery
+        ";
+        $count = $conn->query($countQuery);
+        return $count->fetch_all(MYSQLI_ASSOC);
+    };
+    
+    function getData($options, $conn) {
+        global $per_page;
+        $year = $options['year'];
+        $month = $options['month'];
+        $authorId = $options['author'];
+        $limit = " LIMIT $per_page ";
         $start = $options['start'];
         $offset = " OFFSET $start";
 
@@ -88,14 +120,18 @@ include_once __DIR__ . '/../models/Article.php';
          
                 $options = getOptions();
                 
-                $pageData = getPageCount();
+                $pagesCount = getPageCount($options, $conn);
 
                 $data = getData($options, $conn);
-                      
+                
+                
+
                 echo json_encode(array(
                     'code' => 'success',
                     'options' => $options,
-                    'data' => $data
+                    'data' => $data,
+                    'count' => $pagesCount
+                    
                 ));
             }
             catch (Exception $e) {

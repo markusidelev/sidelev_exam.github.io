@@ -27,7 +27,7 @@ $dbhost = 'localhost';
 $dbname = 'blog';
 $username = "root";
 $password = "";
-$per_page = "10";
+$per_page = 10;
 // $page_position = 
 // $page_number = 1;
 
