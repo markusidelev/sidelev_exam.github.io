@@ -47,7 +47,6 @@
                 <button id="pageBtn" type="button" data-page="1" class="pageBtn">1</button>
 
             <% } else if (last == page) {%>
-                
 
            <% } else { %>
 
