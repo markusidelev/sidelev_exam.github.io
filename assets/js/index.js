@@ -1,15 +1,14 @@
 var blogDB = (function($) {
     
-    // Инициализация модуля
+    // Инициализация
     function init() {
         console.log('BlogDB');
         console.info('init blogDB');
         _getData();
         _bindHandlers();
     };
- 
    
-
+    // сокращения
     var ui = {
         $form: $('#author-form'),
         $author: $('#author_select'),
@@ -24,6 +23,7 @@ var blogDB = (function($) {
         $pageBtn: $('#pageBtn')
     };
 
+    // по-умолчанию
     var selectedYear = 0,
     selectedMonth = 0,
     selectedPage = 1,
@@ -32,7 +32,7 @@ var blogDB = (function($) {
     pageTemplate = _.template( $("#page-template").html() );
 
 
-    
+    // события
     function _bindHandlers() {
         ui.$yearBtn.on('click', _changeYear);
         ui.$monthBtn.on('click', _changeMonth);
@@ -40,36 +40,44 @@ var blogDB = (function($) {
         ui.$author.on('change', _changeAuthor);
     } 
     
+        // сброс страницы при смене автора
     function _changeAuthor() {
-        // только для лога
+        /// только для лога//////
         selectedAutor = ui.$form.serialize();
-        //
+        ///////////////
         selectedPage = 1;
         _getData();
     };
 
+        //смена года
     function _changeYear(){
+
         var $this = $(this);
+        // отмена выбранного года при клике на активную кнопку
         if($this.hasClass("active")){
             $("#year .active").removeClass("active");
             selectedYear = 0;
         }
+        // выбор года
         else {
             $("#year .active").removeClass("active");
             $this.addClass('active');
             selectedYear = $this.attr('data-year');
             selectedPage = 1;
-
+            
         };
         _getData();
     }
     
+    // смена месяца
     function _changeMonth(){
         var $this = $(this);
+        // отмена выбранного месяца при клике на активную кнопку
        if($this.hasClass("active")){
            $("#month .active").removeClass("active");
             selectedMonth = 0;   
         }
+        // выбор месяца
         else {
             $("#month .active").removeClass("active");
             $this.addClass('active');
@@ -77,7 +85,7 @@ var blogDB = (function($) {
         }
         selectedPage = 1;
         _getData();
-
+    };
         // var $this = $(this);
         // if ($this.hasClass( "active" )){
         //     $("#month .active").removeClass("active")
@@ -92,9 +100,9 @@ var blogDB = (function($) {
         //     return selectedMonth;
         // }
         // _getData();
-    }
+    
 
-
+        //смена страницы
     function _changePage(){
         var $this = $(this);
             // $("#page .active").removeAttr("style");
@@ -123,34 +131,41 @@ var blogDB = (function($) {
                 }
             }
         });
-    }
-
+    };
+    
     // ошибка получения данных
     function _dataError(responce) {
         console.error('responce', responce);
         
-    }
-     
+    };
+
+    //логи
+    function logs () {
+        console.log("------------");
+        console.log("количество страниц со статьями (с или без выбранных фильтров)", $pageCount);
+        console.log("выбранная страница", (selectedPage));
+        console.log("выбранный автор", selectedAutor);
+        console.log("выбранный год", selectedYear);
+        console.log("выбранный месяц", selectedMonth);
+        
+    };
+    
     // Успешное получение данных
     function _dataSuccess(responce) {
                 
         //создание блока с кнопками страниц по темплейту
         $pageCount = responce.count[0].count;
-        ui.$page.html(pageTemplate({count: $pageCount}));
+        $pageActive = responce.page;
+        ui.$page.html(pageTemplate({count: $pageCount, page: $pageActive}));
         // создание блока со статьями по темплейту
         ui.$list.html(template({data: responce.data}));
         
         // смена стилей активной кнопки страницы
-        $pageActive = responce.page;
         
         $('button[data-page="' + $pageActive +'"]').addClass('active');
-       
-        console.log("------------");
-        console.log("количество страниц со статьями", $pageCount);
-        console.log("выбранная страница", (selectedPage));
-        console.log("выбранный автор", selectedAutor);
-        console.log("выбранный год", selectedYear);
-        console.log("выбранный месяц", selectedMonth);
+
+        // вывод логов 
+        logs();
 
         
     }

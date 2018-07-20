@@ -74,7 +74,7 @@ body {
 .article {
   width: 840px;
   
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   background: #f8f9fa;
   
   padding-bottom: 40px;
@@ -84,7 +84,7 @@ body {
 }
 
 .article:hover{
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .img {
@@ -99,7 +99,7 @@ body {
 }
 
 .article h2 {
-  margin: 30px 40px;
+  margin: 30px 40px 0;
   font-size: 30px;
   font-weight: 700;
   font-family: 'Spectral', serif;
@@ -256,16 +256,27 @@ select::-ms-expand {
 #page button {
   margin:5px; 
   background-color:#262626;
-   color: white; font-family: "Roboto",
-    sans-serif; font-size:16px;
-     height: 30px;
-      width: 30px; 
+  color: white; font-family: "Roboto",  sans-serif; 
+  font-size:16px;
+  height: 30px;
+  min-width: 30px; 
 }
 #page button:hover {
   background-color: #8c8d8e;
 }
 #page .active {
   background-color: #324772 ;
+}
+
+#page .dots {
+  text-align: center;
+  display: inline;
+  margin:5px; 
+  background-color: #f1f3f5;
+  color: #333333; 
+  
+  /* height: 30px;
+  width: 30px;  */
 }
 
 

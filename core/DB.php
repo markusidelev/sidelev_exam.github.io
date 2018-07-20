@@ -23,9 +23,9 @@ include_once __DIR__ . '/../config.php';
             else
                 return $conn;
         }
-    }
+    };
     
-    //получить значения запроса или по умолчанию
+    //получить значения запроса или кинуть по-умолчанию
     function getOptions() {
         $year = (isset($_POST['year'])) ? (int)$_POST['year'] : 0;
         $monthId = (isset($_POST['month'])) ? (int)$_POST['month'] : 0;
@@ -43,6 +43,7 @@ include_once __DIR__ . '/../config.php';
         
     };
 
+    // количество страниц по выбранным (или нет) фильтрам
     function getPageCount($options, $conn){
         $year = $options['year'];
         $month = $options['month'];
@@ -50,7 +51,8 @@ include_once __DIR__ . '/../config.php';
         $limit = " LIMIT $per_page ";
         $start = $options['start'];
         $offset = " OFFSET $start";
-
+        
+        // условия, проверяющие наличие данный фильтра. встравляет их, если входные данные не равны 0
         $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
         $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
         $authorWhere = ($authorId !== 0) ? "and author_id = $authorId" : '';
@@ -75,6 +77,7 @@ include_once __DIR__ . '/../config.php';
         return $count->fetch_all(MYSQLI_ASSOC);
     };
     
+        // получить все данные для статей
     function getData($options, $conn) {
         global $per_page;
         $year = $options['year'];
@@ -84,6 +87,7 @@ include_once __DIR__ . '/../config.php';
         $start = $options['start'];
         $offset = " OFFSET $start";
 
+        // условия, проверяющие наличие данный фильтра. встравляет их, если входные данные не равны 0
         $yearWhere = ($year !== 0) ? "and year(updated_at) = $year" : '';
         $monthWhere = ($month !== 0) ? "and month(updated_at) = $month" : '';
         $authorWhere = ($authorId !== 0) ? "and author_id = $authorId" : '';
@@ -108,6 +112,7 @@ include_once __DIR__ . '/../config.php';
         $limit
         $offset
         ";
+
         // order by updated_at desc
         
         $data = $conn->query($query);
@@ -125,11 +130,7 @@ include_once __DIR__ . '/../config.php';
                 $data = getData($options, $conn);
 
                 $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
-
-                
-                
-                
-
+                // возврат
                 echo json_encode(array(
                     'code' => 'success',
                     'options' => $options,
@@ -145,4 +146,4 @@ include_once __DIR__ . '/../config.php';
                     'code' => 'error',
                     'message' => $e->getMessage()
                 ));
-            }
+        };
