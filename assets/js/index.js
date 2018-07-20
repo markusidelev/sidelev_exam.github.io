@@ -144,9 +144,11 @@ var blogDB = (function($) {
         console.log("------------");
         console.log("количество страниц со статьями (с или без выбранных фильтров)", $pageCount);
         console.log("выбранная страница", (selectedPage));
+        console.log("количество выводимых статей (меняется в конфиге)", ($perPage));
         console.log("выбранный автор", selectedAutor);
         console.log("выбранный год", selectedYear);
         console.log("выбранный месяц", selectedMonth);
+
         
     };
     
@@ -156,7 +158,8 @@ var blogDB = (function($) {
         //создание блока с кнопками страниц по темплейту
         $pageCount = responce.count[0].count;
         $pageActive = responce.page;
-        ui.$page.html(pageTemplate({count: $pageCount, page: $pageActive}));
+        $perPage = responce.perPage;
+        ui.$page.html(pageTemplate({count: $pageCount, page: $pageActive, perPage: $perPage}));
         // создание блока со статьями по темплейту
         ui.$list.html(template({data: responce.data}));
         

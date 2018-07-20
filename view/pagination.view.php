@@ -25,8 +25,8 @@
         %>
 
         <%
-         var last = Math.floor(count/10)
-         for (var i = 1; i <= 7 && i < count/10 ; i++) { %> 
+         var last = Math.floor(count/perPage)
+         for (var i = 1; i <= 7 && i < count/perPage ; i++) { %> 
 
         <button id="pageBtn"  type='button' data-page=<%= i %> class='pageBtn'><%= i %></button>
 
@@ -42,9 +42,14 @@
            <% };
 
         %>
-            <% if(last < 1) { %>
+
+            <% if(last < 1 ) { %>
                 <button id="pageBtn" type="button" data-page="1" class="pageBtn">1</button>
 
+            <% } else if (last == page) {%>
+                <button id="pageBtn" type="button" data-page=<%= last %> class="pageBtn">        
+                <%= last %>
+                </button>
 
            <% } else { %>
 
