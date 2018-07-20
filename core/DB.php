@@ -32,7 +32,8 @@ include_once __DIR__ . '/../config.php';
         $authorId = (isset($_POST['author_select'])) ? (int)$_POST['author_select'] : 0;
         $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
     // вычисление точки отчета статей (т.е. с какой страницы статьи)
-        $start = ($page * $per_Page) - $per_Page;        
+        $start = ($page * $per_page) - $per_page;        
+              
 
         return array(
             'year' => $year,
@@ -84,7 +85,12 @@ include_once __DIR__ . '/../config.php';
         $month = $options['month'];
         $authorId = $options['author'];
         $limit = " LIMIT $per_page ";
-        $start = $options['start'];
+
+        $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
+        // вычисление точки отчета статей (т.е. с какой страницы статьи)
+        $start = ($page * $per_page) - $per_page;    
+
+        
         $offset = " OFFSET $start";
 
         // условия, проверяющие наличие данный фильтра. встравляет их, если входные данные не равны 0
@@ -129,8 +135,9 @@ include_once __DIR__ . '/../config.php';
                 $pagesCount = getPageCount($options, $conn);
 
                 $data = getData($options, $conn);
-
+                
                 $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
+                     
                 // возврат
                 echo json_encode(array(
                     'code' => 'success',
@@ -138,8 +145,8 @@ include_once __DIR__ . '/../config.php';
                     'data' => $data,
                     'count' => $pagesCount,
                     'page' => $page,
-                    'perPage' => $per_page
-                    
+                    'perPage' => $per_page,
+                                       
                 ));
             }
             catch (Exception $e) {

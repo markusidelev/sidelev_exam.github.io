@@ -18,7 +18,7 @@ $dbname = 'blog';
 $username = "root";
 $password = "";
 
-//Смена количества выводимых статей (работает!)
+//Смена количества выводимых статей
 $per_page = 10;
 
 $db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
