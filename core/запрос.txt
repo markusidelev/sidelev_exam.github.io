@@ -21,7 +21,7 @@ select
         OFFSET 0
 
 // пагинация?
-SELECT COUNT(*) FROM( 
+SELECT COUNT(*) as count FROM( 
     SELECT DISTINCT
     articles.title,
     authors.name,

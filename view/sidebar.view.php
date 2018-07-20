@@ -35,16 +35,16 @@
       </div>
     </div>
     <div id="year" class="sidebar-item__content">
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2005</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2006</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2007</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2008</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2009</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2010</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2011</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2012</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2013</button>
-      <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2014</button>
+      <button type="button" data-year="2005" class="sidebar-item__label yearBtn">2005</button>
+      <button type="button" data-year="2006" class="sidebar-item__label yearBtn">2006</button>
+      <button type="button" data-year="2007" class="sidebar-item__label yearBtn">2007</button>
+      <button type="button" data-year="2008" class="sidebar-item__label yearBtn">2008</button>
+      <button type="button" data-year="2009" class="sidebar-item__label yearBtn">2009</button>
+      <button type="button" data-year="2010" class="sidebar-item__label yearBtn">2010</button>
+      <button type="button" data-year="2011" class="sidebar-item__label yearBtn">2011</button>
+      <button type="button" data-year="2012" class="sidebar-item__label yearBtn">2012</button>
+      <button type="button" data-year="2013" class="sidebar-item__label yearBtn">2013</button>
+      <button type="button" data-year="2014" class="sidebar-item__label yearBtn">2014</button>
       <button type="button" data-year="2015" class="sidebar-item__label yearBtn">2015</button>
       <button type="button" data-year="2016" class="sidebar-item__label yearBtn">2016</button>
       <button type="button" data-year="2017" class="sidebar-item__label yearBtn">2017</button>

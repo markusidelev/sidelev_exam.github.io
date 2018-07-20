@@ -80,6 +80,11 @@ body {
   padding-bottom: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
+  transition: 1s;
+}
+
+.article:hover{
+  transform: scale(1.03);
 }
 
 .img {
@@ -173,7 +178,8 @@ body {
 .sidebar-item__label:hover {
   background-color: #8c8d8e;
 }
-/* SELECT  */
+
+/* стили селекта авторов */
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -185,7 +191,6 @@ select {
   background: white;
   background-image: none;
 }
-/* Custom Select */
 .select {
   position: relative;
   display: block;
@@ -206,9 +211,7 @@ select {
   cursor: pointer;
   font-style: italic;
   padding-left: 20px;
-  font-size: 14px;
-  
-  
+  font-size: 14px;  
   
 }
 select::-ms-expand {
@@ -236,7 +239,7 @@ select::-ms-expand {
   transition: .25s all ease;
 }
 
-
+/* кнопки сайдбара */
 #year .active {
   background-color: #324772 !important;
 }
@@ -245,13 +248,27 @@ select::-ms-expand {
   background-color: #324772 !important;
   /* background-color: #8c8d8e !important; */
 }
-
+/* стили кнопок страниц */
 #page {
   margin: 0 auto;
 }
-#page .active {
-  background-color: #8c8d8e ;
+
+#page button {
+  margin:5px; 
+  background-color:#262626;
+   color: white; font-family: "Roboto",
+    sans-serif; font-size:16px;
+     height: 30px;
+      width: 30px; 
 }
+#page button:hover {
+  background-color: #8c8d8e;
+}
+#page .active {
+  background-color: #324772 ;
+}
+
+
 
 /* footer */
 

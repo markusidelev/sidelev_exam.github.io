@@ -31,7 +31,7 @@ include_once __DIR__ . '/../config.php';
         $monthId = (isset($_POST['month'])) ? (int)$_POST['month'] : 0;
         $authorId = (isset($_POST['author_select'])) ? (int)$_POST['author_select'] : 0;
         $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
-
+    
         $start = ($page * 10) - 10;        
 
         return array(
@@ -56,7 +56,7 @@ include_once __DIR__ . '/../config.php';
         $authorWhere = ($authorId !== 0) ? "and author_id = $authorId" : '';
 
         $countQuery = "
-        SELECT COUNT(*) FROM( 
+        SELECT COUNT(*) AS count FROM( 
             SELECT DISTINCT
             articles.title,
             authors.name,
@@ -123,6 +123,10 @@ include_once __DIR__ . '/../config.php';
                 $pagesCount = getPageCount($options, $conn);
 
                 $data = getData($options, $conn);
+
+                $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
+
+                
                 
                 
 
@@ -130,7 +134,8 @@ include_once __DIR__ . '/../config.php';
                     'code' => 'success',
                     'options' => $options,
                     'data' => $data,
-                    'count' => $pagesCount
+                    'count' => $pagesCount,
+                    'page' => $page
                     
                 ));
             }

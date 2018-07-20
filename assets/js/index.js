@@ -19,24 +19,35 @@ var blogDB = (function($) {
         $monthBtn: $('.monthBtn'),
         $list: $('#list'),
         $template: $('#template'),
+        $pageTemplate: $("#page-template"),
         $page: $('#page'),
-        $pageBtn: $('.pageBtn')
+        $pageBtn: $('#pageBtn')
     };
 
     var selectedYear = 0,
     selectedMonth = 0,
     selectedPage = 1,
-    template = _.template( $("#template").html() );	
+    selectedAutor = 0,
+    template = _.template( $("#template").html() ) ;
+    pageTemplate = _.template( $("#page-template").html() );
 
 
     
     function _bindHandlers() {
         ui.$yearBtn.on('click', _changeYear);
         ui.$monthBtn.on('click', _changeMonth);
-        ui.$pageBtn.on('click', _changePage);
-        ui.$author.on('change', _getData);
+        ui.$page.on('click', '#pageBtn', _changePage);
+        ui.$author.on('change', _changeAuthor);
     } 
     
+    function _changeAuthor() {
+        // только для лога
+        selectedAutor = ui.$form.serialize();
+        //
+        selectedPage = 1;
+        _getData();
+    };
+
     function _changeYear(){
         var $this = $(this);
         if($this.hasClass("active")){
@@ -47,6 +58,7 @@ var blogDB = (function($) {
             $("#year .active").removeClass("active");
             $this.addClass('active');
             selectedYear = $this.attr('data-year');
+            selectedPage = 1;
 
         };
         _getData();
@@ -63,7 +75,7 @@ var blogDB = (function($) {
             $this.addClass('active');
             selectedMonth = $this.attr('data-month');
         }
-        
+        selectedPage = 1;
         _getData();
 
         // var $this = $(this);
@@ -87,15 +99,13 @@ var blogDB = (function($) {
         var $this = $(this);
             // $("#page .active").removeAttr("style");
             
-            $("#page .active").removeClass("active");
-            $this.addClass('active');
-            $this.css('background-color', "#8c8d8e" )
+            // $("#page .active").removeClass("active");
+            
             selectedPage = $this.attr('data-page');
             _getData();
-    }
+    };
 
-     
-
+     //получение данных
     function _getData() {
         var allData = 'year=' + selectedYear + '&' + 'month=' + selectedMonth + '&' + ui.$form.serialize() + '&' + 'page=' + selectedPage;
         $.ajax({
@@ -115,15 +125,33 @@ var blogDB = (function($) {
         });
     }
 
+    // ошибка получения данных
     function _dataError(responce) {
         console.error('responce', responce);
-        // Далее обработка ошибки, зависит от фантазии
+        
     }
      
     // Успешное получение данных
     function _dataSuccess(responce) {
-        console.log(responce);
+                
+        //создание блока с кнопками страниц по темплейту
+        $pageCount = responce.count[0].count;
+        ui.$page.html(pageTemplate({count: $pageCount}));
+        // создание блока со статьями по темплейту
         ui.$list.html(template({data: responce.data}));
+        
+        // смена стилей активной кнопки страницы
+        $pageActive = responce.page;
+        
+        $('button[data-page="' + $pageActive +'"]').addClass('active');
+       
+        console.log("------------");
+        console.log("количество страниц со статьями", $pageCount);
+        console.log("выбранная страница", (selectedPage));
+        console.log("выбранный автор", selectedAutor);
+        console.log("выбранный год", selectedYear);
+        console.log("выбранный месяц", selectedMonth);
+
         
     }
 
