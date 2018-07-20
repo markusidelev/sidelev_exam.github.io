@@ -31,8 +31,8 @@ include_once __DIR__ . '/../config.php';
         $monthId = (isset($_POST['month'])) ? (int)$_POST['month'] : 0;
         $authorId = (isset($_POST['author_select'])) ? (int)$_POST['author_select'] : 0;
         $page = (isset($_POST['page'])) ? (int)$_POST['page'] : 1;
-    
-        $start = ($page * 10) - 10;        
+    // вычисление точки отчета статей (т.е. с какой страницы статьи)
+        $start = ($page * $per_Page) - $per_Page;        
 
         return array(
             'year' => $year,
@@ -121,6 +121,7 @@ include_once __DIR__ . '/../config.php';
 
 
         try {
+                global $per_page;
                 $conn = connectDB();
          
                 $options = getOptions();
@@ -136,7 +137,8 @@ include_once __DIR__ . '/../config.php';
                     'options' => $options,
                     'data' => $data,
                     'count' => $pagesCount,
-                    'page' => $page
+                    'page' => $page,
+                    'perPage' => $per_page
                     
                 ));
             }

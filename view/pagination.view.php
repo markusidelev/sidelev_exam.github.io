@@ -39,14 +39,20 @@
 
             
 
-           <% }
+           <% };
 
         %>
-            <div class="dots"><i class="fas fa-ellipsis-h"></i></div>
-            <button id="pageBtn" type="button" data-page=<%= last %> class="pageBtn">        
-            <%= last %>
-            </button>
+            <% if(last < 1) { %>
+                <button id="pageBtn" type="button" data-page="1" class="pageBtn">1</button>
 
+
+           <% } else { %>
+
+                <div class="dots"><i class="fas fa-ellipsis-h"></i></div>
+                <button id="pageBtn" type="button" data-page=<%= last %> class="pageBtn">        
+                <%= last %>
+                </button>
+        <% }; %>
         <% 
         var next = (page + 1);
         if (next > last ) { %>

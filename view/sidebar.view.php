@@ -35,6 +35,7 @@
       </div>
     </div>
     <div id="year" class="sidebar-item__content">
+      <button type="button" data-year="2004" class="sidebar-item__label yearBtn">2004</button>
       <button type="button" data-year="2005" class="sidebar-item__label yearBtn">2005</button>
       <button type="button" data-year="2006" class="sidebar-item__label yearBtn">2006</button>
       <button type="button" data-year="2007" class="sidebar-item__label yearBtn">2007</button>
